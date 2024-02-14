@@ -29,3 +29,17 @@ button {
     cursor: pointer;
     margin: 5px 0;
 }
+ .task {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+ }
+ .completed {
+    text-decoration: line-through;
+    color: #ccc;
+ }
