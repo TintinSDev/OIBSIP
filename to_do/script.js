@@ -17,3 +17,21 @@ function addTask() {
         renderTasks();
     }
 }
+
+function renderTasks() {
+    const pendingTasks = tasks.filter(task => !task.completed);
+    const completedTasks = tasks.filter(task => task.completed);
+
+    const pendingTasksList = document.getElementById("pendingTasks");
+    const completedTasksList = document.getElementById("completedTasks");
+    pendingTasksList.innerHTML = "";
+    completedTasksList.innerHTML = "";
+}
+
+function toggleCompleted(taskId) {
+    const task = tasks.find(task => task.id === taskId);
+    if (task) {
+        task.completed = !task.completed;
+        renderTasks();
+    }
+}
