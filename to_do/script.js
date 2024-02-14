@@ -35,3 +35,10 @@ function toggleCompleted(taskId) {
         renderTasks();
     }
 }
+function editTask(taskId, newText) {
+    const task = tasks.find(task => task.id === taskId);
+    if (task) {
+        task.text = newText;
+        renderTasks();
+    }
+}
