@@ -1,13 +1,15 @@
-.body {
-   
+body {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-content: center;
     font-family: 'Open Sans', sans-serif; 
-    background: #222;
-    background-image: url('https://source.unsplash.com/1600x900/?landscape') no-repeat center center fixed;
-    background-size: cover;
+    background-image: url("/images/to_do.jpg");
+    background-size: no-repeat;
     
 }
 input[type = "text"] {
-    width: 70%;
+    width: 50%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
