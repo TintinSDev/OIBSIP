@@ -42,3 +42,18 @@ button {
     text-decoration: line-through;
     color: #ccc;
  }
+
+ .task-list {
+    display: flexbox;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 55%;
+    padding: 3px;
+    border: 1px solid #f7f3f3;
+    border-radius: 30px;
+    box-sizing: border-box;
+    margin-top: 1px;
+    margin-bottom: 6px;
+    
+ }
