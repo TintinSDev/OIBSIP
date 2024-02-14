@@ -2,8 +2,8 @@ const tasks = [];
 
 function addTask() {
     const taskInput = document.getElementById("taskInput");
-    const task = taskInput.value.trim();
-    if (task !== "") {
+    const taskText = taskInput.value.trim();
+    if (taskText !== "") {
         // Add the task to the array
         const task = {
             id: Date.now(),
@@ -13,40 +13,53 @@ function addTask() {
             timestamp: new Date().toLocaleString()
         };
         tasks.push(task);
-        taskInput.value = "";
         renderTasks();
+        taskInput.value = "";
     }
 }
 
+
+function toggleComplete(taskId) {
+    const task = tasks.find(task => task.id === taskId);
+    task.completed = !task.completed;
+    renderTasks();
+    
+}
+function editTask(taskId, newText) {
+    const task = tasks.find(task => task.id === taskId);
+    task.text = newText;
+    renderTasks();
+    
+}
+function deleteTask(taskId) {
+    tasks = tasks.filter(task => task.id === taskId);
+        
+        renderTasks();
+    
+}
 function renderTasks() {
-    // const pendingTasks = tasks.filter(task => !task.completed);
-    // const completedTasks = tasks.filter(task => task.completed);
 
     const pendingTasksList = document.getElementById("pendingTasks");
     const completedTasksList = document.getElementById("completedTasks");
     pendingTasksList.innerHTML = "";
     completedTasksList.innerHTML = "";
+
+    tasks.forEach(task => {
+        const li = document.createElement("li");
+        li.className = "task";
+        li.innerHTML = `
+        <span class="${task.completed ? 'completed' : ''}" onclick="toggleComplete(${task.id})">${task.text}</span>
+        <span>${task.timestamp}</span>
+        <button onclick="deleteTask(${task.id})">Delete</button>
+        `;
+        if (task.completed) {
+            completedTasksList.appendChild(li);
+        } else {
+            pendingTasksList.appendChild(li);
+        }
+    
+    });
 }
 
-function toggleCompleted(taskId) {
-    const task = tasks.find(task => task.id === taskId);
-    if (task) {
-        task.completed = !task.completed;
-        renderTasks();
-    }
-}
-function editTask(taskId, newText) {
-    const task = tasks.find(task => task.id === taskId);
-    if (task) {
-        task.text = newText;
-        renderTasks();
-    }
-}
-function deleteTask(taskId) {
-    const index = tasks.findIndex(task => task.id === taskId);
-    if (index !== -1) {
-        tasks.splice(index, 1);
-        renderTasks();
-    }
-}
+
 
