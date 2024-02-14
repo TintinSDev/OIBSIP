@@ -1,14 +1,13 @@
-const tasks = [];
+let tasks = [];
 
 function addTask() {
     const taskInput = document.getElementById("taskInput");
     const taskText = taskInput.value.trim();
     if (taskText !== "") {
         // Add the task to the array
-        const task = {
+        let task = {
             id: Date.now(),
             text:taskText,
-            name: task,
             completed: false,
             timestamp: new Date().toLocaleString()
         };
@@ -19,20 +18,20 @@ function addTask() {
 }
 
 
-function toggleComplete(taskId) {
-    const task = tasks.find(task => task.id === taskId);
+function toggleComplete(id) {
+    const task = tasks.find(task => task.id === id);
     task.completed = !task.completed;
     renderTasks();
     
 }
-function editTask(taskId, newText) {
-    const task = tasks.find(task => task.id === taskId);
+function editTask(id, newText) {
+    const task = tasks.find(task => task.id === id);
     task.text = newText;
     renderTasks();
     
 }
-function deleteTask(taskId) {
-    tasks = tasks.filter(task => task.id === taskId);
+function deleteTask(id) {
+    tasks = tasks.filter(task => task.id === id);
         
         renderTasks();
     
