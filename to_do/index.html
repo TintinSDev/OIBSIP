@@ -12,7 +12,15 @@
         <!-- create a header for the to-do list -->
         <h2>To-Do WebApp</h2>
         <input type="text" id="new-task-input" placeholder="Add a new task">
-        
+        <button onclick="addTask()">Add Task</button>
+        <div>
+            <h3>Pending Tasks</h3>
+            <ul id="pendingTasks"></ul>
+        </div>
+        <div>
+            <h3>Completed Tasks</h3>
+            <ul id="completedTasks"></ul>
+        </div>
         <!-- create a form to add new tasks
         <form id="new-task-form">
             <input
@@ -23,5 +31,7 @@
             <input type="submit" value="Add task" />
         </form> -->
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
