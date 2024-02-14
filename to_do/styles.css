@@ -20,3 +20,12 @@ input[type = "text"] {
     resize: vertical;
     background-color: #f8f8f8;
 }
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px 0;
+}
