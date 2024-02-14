@@ -19,8 +19,8 @@ function addTask() {
 }
 
 function renderTasks() {
-    const pendingTasks = tasks.filter(task => !task.completed);
-    const completedTasks = tasks.filter(task => task.completed);
+    // const pendingTasks = tasks.filter(task => !task.completed);
+    // const completedTasks = tasks.filter(task => task.completed);
 
     const pendingTasksList = document.getElementById("pendingTasks");
     const completedTasksList = document.getElementById("completedTasks");
@@ -42,3 +42,11 @@ function editTask(taskId, newText) {
         renderTasks();
     }
 }
+function deleteTask(taskId) {
+    const index = tasks.findIndex(task => task.id === taskId);
+    if (index !== -1) {
+        tasks.splice(index, 1);
+        renderTasks();
+    }
+}
+
