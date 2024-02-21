@@ -12,59 +12,20 @@
 
 <body>
    <!-- Login Form -->
-     <form action="" method="post">
-        <div class="wrapper">
-            <span class="icon-close">
-                <ion-icon name="close"></ion-icon> </ion-icon>
-            </span>
-            <div class="form-box login">
-                <h2>Login</h2>
-                
-                    <div class="input-box">
-                        <span class="icon">
-                            <ion-icon name="mail"></ion-icon>
-                        </span>
-                        <input type="email" required title="Enter Email" id >
-                        <label>Email</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon">
-                            <ion-icon name="lock-closed">
     
-                            </ion-icon>
-                        </span>
-                        <input type="password" required title="Enter password" id ="login-password">
-                        <label for="">Password</label>
-                    </div>
-                    <div class="remember-forgot">
-                        <label><input type="checkbox">
-                            Remember Me! </label>  <a href="#"> Forgot Password </a>
-                    </div>
-                    <button type="submit" onsubmit="loginUser(); " class="btn" >Login</button>
-                    <div class="login-register">
-                        <p>Don't have an account? <a href="#" class="register-link">Register</a>
-                        </p>
-                    </div>
-                
-            </div>
-    
-    
-         <!-- Registration Form -->
-        <div class="form-box register"> 
+    <div class="wrapper">
+       <form id="login-form" action="/login" method="post">
+        <span class="icon-close">
+            <ion-icon name="close"></ion-icon> </ion-icon>
+        </span>
+        <div class="form-box login">
+            <h2>Login</h2>
             
-                <h2>Registration</h2>
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="person"></ion-icon>
-                    </span>
-                    <input type="text" required title="Enter Username" id ="register-username">
-                    <label>Username</label>
-                </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="email" required title="Enter Email" id ="register-email">
+                    <input type="email" required title="Enter Email" id >
                     <label>Email</label>
                 </div>
                 <div class="input-box">
@@ -73,96 +34,69 @@
 
                         </ion-icon>
                     </span>
-                    <input type="password" required title="Enter Password" id="register-password">
+                    <input type="password" required title="Enter password" id ="login-password">
                     <label for="">Password</label>
                 </div>
                 <div class="remember-forgot">
                     <label><input type="checkbox">
-                        I agree to the terms & conditions</label>
-                    
+                        Remember Me! </label>  <a href="#"> Forgot Password </a>
                 </div>
-                <button type="submit" onsubmit="registerUser();" class="btn">Register</button>
+                <button type="submit" class="btn" >Login</button>
                 <div class="login-register">
-                    <p>Already have an account? <a href="#" class="login-link">Login</a>
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a>
                     </p>
                 </div>
             
-        </div> 
-    </div>
-     </form>   
+        </div>
+       </form>
+       <form id = "register-form" action="/register" method="post">
+        <div class="form-box register"> 
+        
+            <h2>Registration</h2>
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="person"></ion-icon>
+                </span>
+                <input type="text" required title="Enter Username" id ="register-username">
+                <label>Username</label>
+            </div>
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="mail"></ion-icon>
+                </span>
+                <input type="email" required title="Enter Email" id ="register-email">
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="lock-closed">
 
-<!-- <form id="login-form" action="/login" method="post">
+                    </ion-icon>
+                </span>
+                <input type="password" required title="Enter Password" id="register-password">
+                <label for="">Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">
+                    I agree to the terms & conditions</label>
+                
+            </div>
+            <button type="submit"  class="btn">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="#" class="login-link">Login</a>
+                </p>
+            </div>
+        
+    </div> 
+       </form>
     
-    <button type="submit">Login</button>
-</form>
-
-
-<form id="register-form" action="/register" method="post">
-
-    <button type="submit">Register</button>
-</form> -->
-
-    <!-- <script>
-        const bcrypt = require('bcrypt');
-        
-
-        // Database to store user information // Database to store user information (for simplicity, using an object) (for simplicity, using an object)
-       const userDB = {};
-
-        // Function to register a new user
-        function registerUser() {
-            const username = document.getElementById('register-username').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-
-            bcrypt.hash(password, 10, (err, hashedPassword) => {
-                if (err) {
-                    console.error('Error hashing password:', err);
-                    return;
-                }
-                userDB[username] = { email, password: hashedPassword };
-                console.log('User registered successfully.');
-            });
-        }
-
-        // Function to login an existing user
-        function loginUser() {
-            const email = document.getElementById('login-email')
-            const password = document.getElementById('login-password').value;
-
-            for (const user in userDB) {
-                if (userDB[user].email === email) {
-                    bcrypt.compare(password, userDB[user].password, (err, result) => {
-                        if (err) {
-                            console.error('Error comparing passwords:', err);
-                            return;
-                        }
-
-                        if (result) {
-                            console.log(`Login successful. Welcome back, ${user}!`);
-                            displaySecuredPage();
-                        } else {
-                            console.log('Incorrect password. Please try again.');
-                        }
-                    });
-                    return;
-                }
-            }
-            console.log('User not found. Please register.');
-        }
-
-        // Function to display secured page
-        function displaySecuredPage() {
-            console.log('Welcome to the secured page!');
-            console.log('This is some sensitive information.');
-        
-            <script src="https://cdn.jsdelivr.net/npm/bcryptjs/dist/bcrypt.js"></script>
-
-    </script> -->
+    </div>
+    
 
 
     <script src="script.js"></script>
     <script type="module" src = "auth.js"></script>
+    <script type="module" src="server.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
